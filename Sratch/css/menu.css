@@ -1,8 +1,110 @@
+/* Containing element */
 #collapse-menu {
-  z-index: 2;
   position: fixed;
+  right: 0;
+  top: 0;
+}
+
+/* Check box */
+#checkbox {
+  z-index: 3;
+  top: 0;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  display: none;
+}
+/* Div under check box */
+#checkbox + div {
+  position: absolute;
   top: 0;
   right: 0;
-  /* opacity: 0; */
-  cursor: pointer;
+  z-index: 2;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  /* background: rgba(51, 51, 51, 0.95); */
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  display: none;
+}
+
+/* Containing element that displays hidden navigation */
+#nav-overlay {
+  display: none;
+}
+
+/* Naviation menu display box for when hamburger is checked */
+#checkbox:checked ~ #nav-overlay {
+  z-index: 1;
+  width: 150vw;
+  display: block;
+  position: fixed;
+  font-size: 5rem;
+}
+
+/* Naviationg menu for when */
+#checkbox:checked ~ #nav-overlay ul {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5em;
+  align-items: center;
+  background: rgba(51, 51, 51, 0.95);
+  height: 100vh;
+  width: 100vw;
+}
+
+#checkbox:checked ~ #nav-overlay ul li,
+#checkbox:checked ~ #nav-overlay ul a {
+  padding: 1.2em 1000px;
+  margin-bottom: -14px;
+}
+
+#checkbox:checked ~ #nav-overlay ul li a.active,
+#checkbox:checked ~ #nav-overlay ul li a:hover {
+  background: rgba(68, 68, 68, 0.6);
+  color: #f7c08a;
+}
+
+@media only screen and (max-width: 420px) {
+  /* Hamburger */
+  #checkbox + div div {
+    position: relative;
+    background: #fff;
+    height: 2px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #checkbox + div div::before,
+  #checkbox + div div::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    height: 2px;
+    width: 100%;
+    border-radius: 10px;
+    top: 10px;
+  }
+
+  #checkbox + div div::before {
+    top: -10px;
+  }
+
+  #checkbox {
+    display: inline;
+  }
+
+  #checkbox + div {
+    display: inline;
+    margin-top: 17px;
+  }
 }

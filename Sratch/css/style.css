@@ -142,7 +142,7 @@ h1.main-head {
   grid-template-areas:
     "img img img hist hist hist"
     "loc loc meal meal fit fit"
-    "footer footer footer footer footer footer";
+    "foot foot foot foot foot foot";
   color: #333;
 }
 
@@ -193,7 +193,7 @@ h1.main-head {
 }
 
 .footer {
-  grid-area: footer;
+  grid-area: foot;
   background: #333;
   color: #fff;
   text-align: center;
@@ -201,23 +201,33 @@ h1.main-head {
 }
 
 /* About Page */
+
+#about {
+  /* position: absolute; */
+}
+
 #about .body {
   display: grid;
-  grid-template-rows: 350px 600px;
+  grid-template-rows: 350px 600px 75px;
   grid-template-columns: 2fr 3fr 3fr 2fr;
   grid-template-areas:
     ". about aboutimg ."
-    "guests guests guests guests";
+    "guests guests guests guests"
+    "foot foot foot foot";
 }
 
 #about .about {
   grid-area: about;
-  margin-top: 40px;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 2em;
 }
 
 #about .about h1 {
-  margin-top: 0.3em;
+  line-height: 1.2em;
 }
 
 #about .img {
@@ -227,7 +237,6 @@ h1.main-head {
   border-radius: 60%;
   height: 75%;
   align-self: center;
-  align-items: right;
   margin-left: 100px;
 }
 
@@ -252,7 +261,7 @@ h1.main-head {
   margin-bottom: 4.5rem;
   padding: 10px;
   width: 60%;
-  display: flex;
+  /* display: flex; */
   text-align: center;
   align-items: center;
 }
@@ -261,6 +270,11 @@ h1.main-head {
   height: 100px;
   border-radius: 50%;
   margin-right: 30px;
+  float: left;
+}
+
+#about .footer {
+  grid-area: foot;
 }
 
 /* Contact Us  */
@@ -269,6 +283,9 @@ h1.main-head {
 }
 #contact-grid label {
   margin: 15px 0;
+}
+#contact-form {
+  padding: 0 50px;
 }
 
 #contact-grid input,
@@ -295,18 +312,53 @@ h1.main-head {
   padding: 4em;
 }
 
+#contact-grid .info-item {
+  margin: 0 30px;
+}
+
+@media only screen and (max-width: 1300px) {
+  #about .body {
+    display: grid;
+    grid-template-rows: 350px 600px 75px;
+    grid-template-columns: 2fr 6fr 2fr;
+    grid-template-areas:
+      ". about ."
+      "guests guests guests"
+      "foot foot foot";
+  }
+
+  #about .img {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1060px) {
   /* Hotel History */
   #feature {
+    grid-template-rows: 350px 1000px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       "hist hist hist"
       "loc meal fit"
-      "footer footer footer";
+      "foot foot foot";
   }
 
   #feature .img {
     display: none;
+  }
+
+  #about .body {
+    display: grid;
+    grid-template-rows: auto auto 75px;
+    grid-template-columns: 2fr 6fr 2fr;
+    grid-template-areas:
+      ". about ."
+      "guests guests guests"
+      "foot foot foot";
+  }
+
+  #about .guest {
+    padding: 20px;
   }
 }
 
@@ -319,7 +371,7 @@ h1.main-head {
       "loc"
       "meal"
       "fit"
-      "footer";
+      "foot";
   }
 
   #feature .location,
@@ -334,7 +386,7 @@ h1.main-head {
     grid-template-rows: 500px 105px;
     grid-template-areas:
       "hist"
-      "footer";
+      "foot";
   }
 
   #feature .location,
@@ -350,5 +402,21 @@ h1.main-head {
   }
   #feature {
     grid-template-rows: 650px 105px;
+  }
+
+  #contact-grid .inner-flex {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+  }
+
+  #contact-grid .info-item {
+    margin-bottom: 1em;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  ul.nav {
+    display: none;
   }
 }
